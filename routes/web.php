@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('register','RegisterController@registerPageShow')->name('register'); //without the name parameter it gives route not defined error.
 
 Route::get('repair','RepairController@repairPageShow')->name('repair');
+
+Route::post('store','RegisterController@store')->name('store');

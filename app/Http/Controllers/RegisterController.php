@@ -42,7 +42,15 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $register = 
+        $register = new Register;
+
+         $register->id           = $request->id;
+         $register->category     = $request->category;
+         $register->equipment_id = $request->equipment_id;
+         $register->serial_no    = $request->serial_no;
+         $register->supplier     = $request->supplier;
+
+         $register->save();
     }
 
     /**
