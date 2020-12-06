@@ -13,7 +13,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function registerPageShow(){
-        return view('register');
+        return view('RegisterEquipment.register');
     }
 
 
@@ -21,7 +21,11 @@ class RegisterController extends Controller
 
     public function index()
     {
-        
+        $registers = Register::all();
+
+        return view('RegisterEquipment.index')->with(['registers' => $registers]);
+
+        //return $registers; 
     }
 
     /**
@@ -70,9 +74,11 @@ class RegisterController extends Controller
      * @param  \App\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function edit(Register $register)
-    {
-        //
+    public function edit($id)
+    {   
+        $registers = Register::find($id);
+
+        return view('RegisterEquipment.edit')->with(['registers' => $registers]);
     }
 
     /**
@@ -82,9 +88,17 @@ class RegisterController extends Controller
      * @param  \App\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Register $register)
+    public function update(Request $request, $id)
     {
-        //
+        $registers = Register::find($id);
+
+         $registers->id           = $request->id;
+         $registers->category     = $request->category;
+         $registers->equipment_id = $request->equipment_id;
+         $registers->serial_no    = $request->serial_no;
+         $registers->supplier     = $request->supplier;
+
+         $registers->save();
     }
 
     /**

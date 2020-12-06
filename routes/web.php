@@ -15,8 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('register','RegisterController@registerPageShow')->name('register'); //without the name parameter it gives route not defined error.
+Route::get('RegisterEquipment/register','RegisterController@registerPageShow')->name('register'); //without the name parameter it gives route not defined error.
 
 Route::get('repair','RepairController@repairPageShow')->name('repair');
 
 Route::post('store','RegisterController@store')->name('store');
+
+Route::get('RegisterEquipment/index','RegisterController@index')->name('register.index');
+
+Route::get('RegisterEquipment/edit/{id}','RegisterController@edit')->name('register.edit');
+
+Route::post('RegisterEquipment/update/{id}','RegisterController@update')->name('register.update');
+
