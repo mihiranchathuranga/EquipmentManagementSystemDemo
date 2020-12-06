@@ -85,8 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Register</a>
-                    <a href="https://laracasts.com">Repair</a>
+                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('repair') }}">Repair</a>
                     
                 </div>
             </div>

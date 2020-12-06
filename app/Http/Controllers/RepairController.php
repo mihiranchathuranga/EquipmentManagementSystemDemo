@@ -6,7 +6,10 @@ use App\Repair;
 use Illuminate\Http\Request;
 
 class RepairController extends Controller
-{
+{   
+    public function repairPageShow(){
+        return view('repair');
+    }
     /**
      * Display a listing of the resource.
      *

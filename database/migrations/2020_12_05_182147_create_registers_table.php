@@ -15,6 +15,10 @@ class CreateRegistersTable extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->char('category');
+            $table->char('equipment_id');
+            $table->char('serial_no');
+            $table->char('supplier');
             $table->timestamps();
         });
     }

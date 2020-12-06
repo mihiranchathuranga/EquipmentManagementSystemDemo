@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('register','RegisterController@registerPageShow')->name('register'); //without the name parameter it gives route not defined error.
+
+Route::get('repair','RepairController@repairPageShow')->name('repair');

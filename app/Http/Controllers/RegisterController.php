@@ -12,9 +12,16 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function registerPageShow(){
+        return view('register');
+    }
+
+
+
+
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +42,7 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $register = 
     }
 
     /**
