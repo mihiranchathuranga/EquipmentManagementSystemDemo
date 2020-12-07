@@ -6,29 +6,25 @@
 </head>
 <body>
 
-<form>
+<form action="{{ action('RepairController@store') }}" method="POST">
   <div class="form-group ">
-    <label for="exampleInputEmail1">Equipment Name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="repair">Repair No</label>
+    <input type="text" class="form-control"  name="id"  >
  
   </div>
   <div class="form-group ">
-    <label for="exampleInputPassword1">Equipment</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" >
+    <label for="description">Description</label>
+    <input type="text" class="form-control" name="description" >
   </div>
    <div class="form-group">
-    <label for="exampleInputPassword1">Repair/Maintanance Description</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-   <div class="form-group">
-    <label for="exampleInputPassword1">Cost</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" >
+    <label for="cost">Cost</label>
+    <input type="text" class="form-control" name="cost">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Invoice No</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" >
+    <label for="invoice_attach">Invoice Attach</label>
+    <input type="text" class="form-control" name="invoice_attach" >
   </div>
- 
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
@@ -36,4 +32,3 @@
 </html>
 
 
-Equipment,Date ,Repair/Maintanance description,Cost,Invoice_attachment

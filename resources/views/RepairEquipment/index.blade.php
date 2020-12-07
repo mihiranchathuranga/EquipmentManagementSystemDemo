@@ -19,11 +19,11 @@
   </thead>
   <tbody>
     <tr>
-      @foreach ($registers as $register)
-      <th scope="row"><p>{{ $register->id}}</p></th>      
-    <td><a href= "{{ url('RegisterEquipment/show', $register->id) }}"class="btn btn-primary">Show</a></td>
-    <td><a href= "{{ url('RegisterEquipment/edit', $register->id) }}" class="btn btn-primary">Update</a></td>
-    <td><a href="{{ url('RegisterEquipment/destroy',$register->id) }}"  class="btn btn-primary">Delete</a></td>
+      @foreach ($repairs as $repair)
+      <th scope="row"><p>{{ $repair->id}}</p></th>      
+    <td><a href= "{{ url('RepairEquipment/show', $repair->id) }}"class="btn btn-primary">Show</a></td>
+    <td><a href= "{{ url('RepairEquipment/edit', $repair->id) }}" class="btn btn-primary">Update</a></td>
+    <td><a href="{{ url('RepairEquipment/destroy',$repair->id) }}"  class="btn btn-primary">Delete</a></td>
     </tr>
      @endforeach
     

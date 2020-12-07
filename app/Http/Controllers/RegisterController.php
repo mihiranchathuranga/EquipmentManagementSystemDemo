@@ -16,7 +16,17 @@ class RegisterController extends Controller
         return view('RegisterEquipment.register');
     }
 
+     public function show($id)
+    {
+       // $registers = Register::find($id);
+          $registers = Register::findOrFail($id);
+         // dd($registers);
 
+       // return view('RegisterEquipment.show')->with('registers',$registers);
+      //  return View::make('blog')->with('posts', $posts);
+        //return view('RegisterEquipment.show',$registers);
+          return view('RegisterEquipment.show',compact('registers'));
+    }
 
 
     public function index()
@@ -63,11 +73,7 @@ class RegisterController extends Controller
      * @param  \App\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function show(Register $register)
-    {
-        //
-    }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -107,8 +113,14 @@ class RegisterController extends Controller
      * @param  \App\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Register $register)
+    public function destroy(Request $request,$id)
     {
-        //
+        //$register = Register::find($id);
+        $register =Register::where('id',$id)->first();
+
+        $register->delete();
+
+        return redirect('RegisterEquipment/index');
+        //return redirect()->action('HomeController@index');
     }
 }

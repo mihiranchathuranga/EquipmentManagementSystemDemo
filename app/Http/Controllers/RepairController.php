@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class RepairController extends Controller
 {   
     public function repairPageShow(){
-        return view('repair');
+        return view('RepairEquipment.repair');
     }
     /**
      * Display a listing of the resource.
@@ -17,7 +17,11 @@ class RepairController extends Controller
      */
     public function index()
     {
-        //
+        $repairs = Repair::all();
+
+        return view('RepairEquipment.index')->with(['repairs' => $repairs]);
+
+        //return $registers; 
     }
 
     /**
@@ -38,7 +42,15 @@ class RepairController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $repair = new Repair;
+
+         $repair->id                  = $request->id;
+         $repair->description         = $request->description;
+         $repair->cost                = $request->cost;
+         $repair->invoice_attach      = $request->invoice_attach;
+         
+         $repair->save();
+
     }
 
     /**
@@ -47,9 +59,16 @@ class RepairController extends Controller
      * @param  \App\Repair  $repair
      * @return \Illuminate\Http\Response
      */
-    public function show(Repair $repair)
+    public function show($id)
     {
-        //
+         // $registers = Register::find($id);
+          $repairs = Repair::findOrFail($id);
+         // dd($registers);
+
+       // return view('RegisterEquipment.show')->with('registers',$registers);
+      //  return View::make('blog')->with('posts', $posts);
+        //return view('RegisterEquipment.show',$registers);
+          return view('RepairEquipment.show',compact('repairs'));
     }
 
     /**
@@ -58,9 +77,11 @@ class RepairController extends Controller
      * @param  \App\Repair  $repair
      * @return \Illuminate\Http\Response
      */
-    public function edit(Repair $repair)
+    public function edit($id)
     {
-        //
+        $repairs = Repair::find($id);
+
+        return view('RepairEquipment.edit')->with(['repairs' => $repairs]);
     }
 
     /**
@@ -70,9 +91,19 @@ class RepairController extends Controller
      * @param  \App\Repair  $repair
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Repair $repair)
+    public function update(Request $request,$id)
     {
-        //
+        $repairs = Repair::find($id);
+
+         $repairs->id                = $request->id;
+         $repairs->description       = $request->description;
+         $repairs->cost              = $request->cost;
+         $repairs->invoice_attach    = $request->invoice_attach;
+         
+         $repairs->save();
+
+         
+
     }
 
     /**
@@ -81,8 +112,15 @@ class RepairController extends Controller
      * @param  \App\Repair  $repair
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Repair $repair)
+    public function destroy($id)
     {
-        //
+        
+        //$register = Register::find($id);
+        $repair =Repair::where('id',$id)->first();
+
+        $repair->delete();
+
+        return redirect('RepairEquipment/index');
+        //return redirect()->action('HomeController@index');
     }
 }

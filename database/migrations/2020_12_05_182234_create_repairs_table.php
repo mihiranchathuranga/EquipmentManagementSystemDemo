@@ -15,6 +15,9 @@ class CreateRepairsTable extends Migration
     {
         Schema::create('repairs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('description');
+            $table->char('cost');
+            $table->char('invoice_attach');
             $table->timestamps();
         });
     }
@@ -29,3 +32,5 @@ class CreateRepairsTable extends Migration
         Schema::dropIfExists('repairs');
     }
 }
+
+
